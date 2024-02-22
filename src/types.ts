@@ -49,17 +49,17 @@ export interface BaseLedgerResponse {
   message?: string;
 }
 export interface GetAddressResponse extends BaseLedgerResponse {
-  publicKey?: string;
+  publicKey?: string | null;
 }
 export interface SignTransactionResponse extends BaseLedgerResponse {
-  signature?: string;
+  signature?: string | null;
 }
 export interface GetAppVersionResponse extends BaseLedgerResponse {
-  version?: string;
-
-}export interface GetAppNameResponse extends BaseLedgerResponse {
+  version?: string | null;
+}
+export interface GetAppNameResponse extends BaseLedgerResponse {
   name?: string;
-  version?: string;
+  version?: string | null;
 }
 
 export enum Networks {

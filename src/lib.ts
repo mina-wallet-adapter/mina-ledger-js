@@ -125,7 +125,7 @@ export class MinaLedgerJS {
    * const result = await Mina.getAddress(1);
    * const { publicKey, returnCode } = result;
    */
-  async getAddress(account: number =0): Promise<GetAddressResponse> {
+  async getAddress(account: number = 0): Promise<GetAddressResponse> {
     if (!Number.isInteger(account)) {
       return {
         publicKey: null,
@@ -168,10 +168,10 @@ export class MinaLedgerJS {
         publicKey,
         returnCode,
       };
-    } catch (e) {
+    } catch (e: any) {
       return {
         publicKey: null,
-        returnCode: e.returnCode?.toString() || '5000',
+        returnCode: e.returnCode?.toString() || "5000",
         message: e.message,
         statusText: e.statusText,
       };
@@ -277,7 +277,7 @@ export class MinaLedgerJS {
         signature,
         returnCode,
       };
-    } catch (e) {
+    } catch (e: any) {
       return {
         signature: null,
         returnCode: e.statusCode.toString(),
@@ -314,10 +314,10 @@ export class MinaLedgerJS {
         version,
         returnCode,
       };
-    } catch (e) {
+    } catch (e: any) {
       return {
         version: null,
-        returnCode: e.statusCode?.toString() || '5000',
+        returnCode: e.statusCode?.toString() || "5000",
         message: e.message,
         statusText: e.statusText,
       };
@@ -343,16 +343,16 @@ export class MinaLedgerJS {
       );
 
       const returnCode = response.slice(response.length - 2, response.length).toString("hex");
-      const separatorPosition = response.indexOf(0x05)
-      const name = response.slice(2, separatorPosition).toString('ascii');
-      const version = response.slice(separatorPosition + 1, response.length - 4).toString('utf-8');
+      const separatorPosition = response.indexOf(0x05);
+      const name = response.slice(2, separatorPosition).toString("ascii");
+      const version = response.slice(separatorPosition + 1, response.length - 4).toString("utf-8");
 
       return {
         name, // Mina
         version, // 1.0.0
         returnCode,
       };
-    } catch (e) {
+    } catch (e: any) {
       return {
         version: null,
         returnCode: e.statusCode?.toString() || "5000",
