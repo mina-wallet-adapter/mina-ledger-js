@@ -7,7 +7,7 @@ import {
   GetAppVersionResponse,
   GetAppNameResponse,
 } from "./types";
-import { Buffer } from "buffer/";
+import { Buffer } from "buffer";
 const CLA_LEDGER = 0xb0;
 const INS_LEDGER = {
   GET_NAME_VERSION: 0x01,
